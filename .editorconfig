@@ -1,0 +1,11 @@
+﻿root = true
+
+[*]
+charset = utf-8
+end_of_line = crlf
+indent_size = 4
+indent_style = space
+tab_width = 4
+max_line_length = 120
+trim_trailing_whitespace = true
+insert_final_newline = true
