@@ -3,15 +3,16 @@ using System.IO;
 using System.Windows;
 using AdonisUI;
 using Caliburn.Micro;
-using Newtonsoft.Json;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace WpfAppCore.Services;
 
 [Serializable]
 public class SettingsManager
 {
-    [JsonProperty(PropertyName = "currentTheme")]
-    public string CurrentTheme { get; private set; } = "Light";
+    [JsonPropertyName("currentTheme")]
+    public string CurrentTheme { get; set; } = "Light";
 
     public void ChangeTheme(string theme)
     {
@@ -26,10 +27,12 @@ public class SettingsManager
         try
         {
             var settingsManager = IoC.Get<SettingsManager>();
-            using var file = File.CreateText(filename);
-            var serializer = new JsonSerializer();
-            serializer.Formatting = Formatting.Indented;
-            serializer.Serialize(file, settingsManager);
+            var serializerOptions = new JsonSerializerOptions
+            {
+                WriteIndented = true,
+            };
+            string serializedRes = JsonSerializer.Serialize(settingsManager, serializerOptions);
+            File.WriteAllText(filename, serializedRes);
         }
         catch (Exception e)
         {
@@ -43,7 +46,8 @@ public class SettingsManager
         try
         {
             var settingsManager = IoC.Get<SettingsManager>();
-            var loadedSettings = JsonConvert.DeserializeObject<SettingsManager>(File.ReadAllText(filename));
+            var loadedSettings = JsonSerializer.Deserialize<SettingsManager>(File.ReadAllText(filename));
+            MessageBox.Show(loadedSettings.CurrentTheme, "Theme");
             settingsManager.ChangeTheme(loadedSettings.CurrentTheme);
         }
         catch (Exception e)
