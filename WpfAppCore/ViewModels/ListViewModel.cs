@@ -13,7 +13,7 @@ namespace WpfAppCore.ViewModels
         {
             _windowManager = windowManager;
         }
-        
+
         private ObservableCollection<Person> _myList = new ObservableCollection<Person>();
         public ObservableCollection<Person> MyList
         {
@@ -56,19 +56,19 @@ namespace WpfAppCore.ViewModels
             NotifyOfPropertyChange(nameof(CanRemoveAll));
         }
 
-        public void Edit()
+        public async void Edit()
         {
             if (SelectedMyList == null)
             {
                 return;
             }
-            
+
             EditViewModel editViewModel = IoC.Get<EditViewModel>();
             editViewModel.Name = SelectedMyList.Name;
             editViewModel.Surname = SelectedMyList.Surname;
             editViewModel.Age = SelectedMyList.Age.ToString();
 
-            if (_windowManager.ShowDialog(editViewModel) == true)
+            if (await _windowManager.ShowDialogAsync(editViewModel) == true)
             {
                 SelectedMyList.Name = editViewModel.Name;
                 SelectedMyList.Surname = editViewModel.Surname;

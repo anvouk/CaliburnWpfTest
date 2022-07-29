@@ -51,10 +51,10 @@ namespace WpfAppCore
                 .ForEach(z => _container.RegisterPerRequest(z, z.ToString(), z));
         }
 
-        protected override void OnStartup(object sender, StartupEventArgs e)
+        protected override async void OnStartup(object sender, StartupEventArgs e)
         {
             SettingsManager.LoadFromJsonFile(SettingsFilename);
-            DisplayRootViewFor<ShellViewModel>();
+            await DisplayRootViewForAsync<ShellViewModel>();
         }
 
         protected override void OnExit(object sender, EventArgs e)

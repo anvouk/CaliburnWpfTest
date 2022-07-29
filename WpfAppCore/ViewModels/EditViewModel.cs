@@ -49,15 +49,15 @@ namespace WpfAppCore.ViewModels
             !string.IsNullOrEmpty(Surname) &&
             !string.IsNullOrEmpty(Age) &&
             int.TryParse(Age, out _);
-        
-        public void Confirm()
+
+        public async void Confirm()
         {
-            TryClose(true);
+            await TryCloseAsync(true);
         }
 
-        public void Abort()
+        public async void Abort()
         {
-            TryClose(false);
+            await TryCloseAsync(false);
         }
     }
 }

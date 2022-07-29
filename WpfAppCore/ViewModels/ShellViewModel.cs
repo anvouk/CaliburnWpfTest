@@ -11,7 +11,7 @@ namespace WpfAppCore.ViewModels
     public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
     {
         private readonly IWindowManager _windowManager;
-        
+
         public ShellViewModel(IWindowManager windowManager)
         {
             _windowManager = windowManager;
@@ -23,20 +23,20 @@ namespace WpfAppCore.ViewModels
             "aa", "bb"
         };
 
-        public void ShowList()
+        public async void ShowList()
         {
-            _windowManager.ShowWindow(IoC.Get<ListViewModel>());
+            await _windowManager.ShowWindowAsync(IoC.Get<ListViewModel>());
         }
-        
+
         public void MenuItem_New()
         {
             Console.WriteLine("Hi");
             Console.WriteLine(SelectedComboBox ?? "nada");
         }
 
-        public void MenuItem_Settings()
+        public async void MenuItem_Settings()
         {
-            _windowManager.ShowDialog(IoC.Get<SettingsViewModel>());
+            await _windowManager.ShowWindowAsync(IoC.Get<SettingsViewModel>());
         }
     }
 }
