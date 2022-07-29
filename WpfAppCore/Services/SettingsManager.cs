@@ -1,10 +1,10 @@
 ﻿using System;
 using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Windows;
 using AdonisUI;
 using Caliburn.Micro;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 
 namespace WpfAppCore.Services;
 
@@ -18,7 +18,7 @@ public class SettingsManager
     {
         if (theme == CurrentTheme) return;
         CurrentTheme = theme;
-        var th = theme == "Light" ? ResourceLocator.LightColorScheme : ResourceLocator.DarkColorScheme;
+        Uri? th = theme == "Light" ? ResourceLocator.LightColorScheme : ResourceLocator.DarkColorScheme;
         ResourceLocator.SetColorScheme(Application.Current.Resources, th);
     }
 
@@ -26,10 +26,10 @@ public class SettingsManager
     {
         try
         {
-            var settingsManager = IoC.Get<SettingsManager>();
-            var serializerOptions = new JsonSerializerOptions
+            SettingsManager? settingsManager = IoC.Get<SettingsManager>();
+            JsonSerializerOptions serializerOptions = new()
             {
-                WriteIndented = true,
+                WriteIndented = true
             };
             string serializedRes = JsonSerializer.Serialize(settingsManager, serializerOptions);
             File.WriteAllText(filename, serializedRes);
@@ -45,8 +45,8 @@ public class SettingsManager
     {
         try
         {
-            var settingsManager = IoC.Get<SettingsManager>();
-            var loadedSettings = JsonSerializer.Deserialize<SettingsManager>(File.ReadAllText(filename));
+            SettingsManager? settingsManager = IoC.Get<SettingsManager>();
+            SettingsManager? loadedSettings = JsonSerializer.Deserialize<SettingsManager>(File.ReadAllText(filename));
             MessageBox.Show(loadedSettings.CurrentTheme, "Theme");
             settingsManager.ChangeTheme(loadedSettings.CurrentTheme);
         }
@@ -58,7 +58,7 @@ public class SettingsManager
 
     public static void LoadDefaultSettings()
     {
-        var settingsManager = IoC.Get<SettingsManager>();
+        SettingsManager? settingsManager = IoC.Get<SettingsManager>();
         settingsManager.ChangeTheme("Light");
     }
 }

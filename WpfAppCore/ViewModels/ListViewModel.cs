@@ -60,7 +60,7 @@ public class ListViewModel : Screen
     {
         if (SelectedMyList == null) return;
 
-        var editViewModel = IoC.Get<EditViewModel>();
+        EditViewModel? editViewModel = IoC.Get<EditViewModel>();
         editViewModel.Name = SelectedMyList.Name;
         editViewModel.Surname = SelectedMyList.Surname;
         editViewModel.Age = SelectedMyList.Age.ToString();
