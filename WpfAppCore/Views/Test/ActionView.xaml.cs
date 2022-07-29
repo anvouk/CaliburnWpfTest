@@ -1,12 +1,11 @@
 ﻿using System.Windows;
 
-namespace WpfAppCore.Views
+namespace WpfAppCore.Views;
+
+public partial class ActionView : Window
 {
-    public partial class ActionView : Window
+    public ActionView()
     {
-        public ActionView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

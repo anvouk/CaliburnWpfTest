@@ -1,13 +1,11 @@
-﻿using System.Windows;
-using AdonisUI.Controls;
+﻿using AdonisUI.Controls;
 
-namespace WpfAppCore.Views
+namespace WpfAppCore.Views;
+
+public partial class ListView : AdonisWindow
 {
-    public partial class ListView : AdonisWindow
+    public ListView()
     {
-        public ListView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

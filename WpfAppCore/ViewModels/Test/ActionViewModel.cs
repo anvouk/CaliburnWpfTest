@@ -1,34 +1,47 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using Caliburn.Micro;
 
-namespace WpfAppCore.ViewModels
+namespace WpfAppCore.ViewModels;
+
+public class ActionViewModel : Screen
 {
-    public class ActionViewModel : Screen
+    private string _output;
+
+    public string Output
     {
-        private string _output;
+        get => _output;
+        set => Set(ref _output, value);
+    }
 
-        public void Clear() => Output = String.Empty;
+    public void Clear()
+    {
+        Output = string.Empty;
+    }
 
-        public void SimpleSayHello() => Output = "Hello from Caliburn.Micro";
+    public void SimpleSayHello()
+    {
+        Output = "Hello from Caliburn.Micro";
+    }
 
-        public void SayHello(string name) => Output = $"Hello {name}";
+    public void SayHello(string name)
+    {
+        Output = $"Hello {name}";
+    }
 
-        public bool CanSayHello(string name) => !String.IsNullOrEmpty(name);
+    public bool CanSayHello(string name)
+    {
+        return !string.IsNullOrEmpty(name);
+    }
 
-        public Task SayGoodbyeAsync(string name)
-        {
-            Output = $"Goodbye {name}";
+    public Task SayGoodbyeAsync(string name)
+    {
+        Output = $"Goodbye {name}";
 
-            return Task.FromResult(true);
-        }
-        
-        public bool CanSayGoodbye(string name) => !String.IsNullOrEmpty(name);
+        return Task.FromResult(true);
+    }
 
-        public string Output
-        {
-            get => _output;
-            set => Set(ref _output, value);
-        }
+    public bool CanSayGoodbye(string name)
+    {
+        return !string.IsNullOrEmpty(name);
     }
 }

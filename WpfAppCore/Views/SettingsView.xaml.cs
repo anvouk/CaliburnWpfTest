@@ -1,13 +1,11 @@
-﻿using System.Windows;
-using AdonisUI.Controls;
+﻿using AdonisUI.Controls;
 
-namespace WpfAppCore.Views
+namespace WpfAppCore.Views;
+
+public partial class SettingsView : AdonisWindow
 {
-    public partial class SettingsView : AdonisWindow
+    public SettingsView()
     {
-        public SettingsView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

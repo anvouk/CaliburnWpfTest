@@ -1,13 +1,11 @@
-﻿using System.Windows;
-using AdonisUI.Controls;
+﻿using AdonisUI.Controls;
 
-namespace WpfAppCore.Views
+namespace WpfAppCore.Views;
+
+public partial class EditView : AdonisWindow
 {
-    public partial class EditView : AdonisWindow
+    public EditView()
     {
-        public EditView()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

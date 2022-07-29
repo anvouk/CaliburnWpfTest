@@ -1,13 +1,11 @@
-﻿using System.Windows;
-using AdonisUI.Controls;
+﻿using AdonisUI.Controls;
 
-namespace WpfAppCore.Views
+namespace WpfAppCore.Views;
+
+public partial class ShellView : AdonisWindow
 {
-    public partial class ShellView : AdonisWindow
+    public ShellView()
     {
-        public ShellView()
-        {
-            InitializeComponent();
-        }
-	}
+        InitializeComponent();
+    }
 }

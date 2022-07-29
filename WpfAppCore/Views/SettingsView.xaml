@@ -1,14 +1,13 @@
 ﻿<controls:AdonisWindow x:Class="WpfAppCore.Views.SettingsView"
-               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-               xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-               xmlns:local="clr-namespace:WpfAppCore.Views"
-               xmlns:controls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
-               xmlns:cal="http://www.caliburnproject.org"
-               mc:Ignorable="d"
-               MinHeight="200" MinWidth="400"
-               Title="Settings" Height="450" Width="800">
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:controls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                       xmlns:cal="http://www.caliburnproject.org"
+                       mc:Ignorable="d"
+                       MinHeight="200" MinWidth="400"
+                       Title="Settings" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -35,17 +34,18 @@
             Grid.Column="1"
             Margin="5">
             <StackPanel HorizontalAlignment="Left">
-                <ComboBox x:Name="ThemeComboBox" cal:Message.Attach="[Event SelectionChanged] = [ChangeTheme(ThemeComboBox)]" MinWidth="40" />
+                <ComboBox x:Name="ThemeComboBox"
+                          cal:Message.Attach="[Event SelectionChanged] = [ChangeTheme(ThemeComboBox)]" MinWidth="40" />
             </StackPanel>
         </Grid>
-        <Button 
+        <Button
             Grid.Row="1"
             Grid.Column="0"
             Grid.ColumnSpan="2"
             Content="Save"
             HorizontalAlignment="Right"
             Margin="0,0,75,10"
-            VerticalAlignment="Bottom" Width="100"/>
+            VerticalAlignment="Bottom" Width="100" />
         <Button
             Grid.Row="1"
             Grid.Column="0"
@@ -55,6 +55,6 @@
             HorizontalAlignment="Right"
             Width="60"
             Height="24"
-            VerticalAlignment="Bottom"/>
+            VerticalAlignment="Bottom" />
     </Grid>
 </controls:AdonisWindow>

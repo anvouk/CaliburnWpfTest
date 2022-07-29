@@ -1,63 +1,54 @@
-﻿using System;
-using Caliburn.Micro;
+﻿using Caliburn.Micro;
 
-namespace WpfAppCore.ViewModels
+namespace WpfAppCore.ViewModels;
+
+public class EditViewModel : Screen
 {
-    public class EditViewModel : Screen
+    private string _age = "";
+    private string _name = "";
+
+    private string _surname = "";
+
+    public string Name
     {
-        private string _name = "";
-        public string Name
+        get => _name;
+        set
         {
-            get => _name;
-            set
-            {
-                if (Set(ref _name, value))
-                {
-                    NotifyOfPropertyChange(nameof(CanConfirm));
-                }
-            }
+            if (Set(ref _name, value)) NotifyOfPropertyChange(nameof(CanConfirm));
         }
+    }
 
-        private string _surname = "";
-        public string Surname
+    public string Surname
+    {
+        get => _surname;
+        set
         {
-            get => _surname;
-            set
-            {
-                if (Set(ref _surname, value))
-                {
-                    NotifyOfPropertyChange(nameof(CanConfirm));
-                }
-            }
+            if (Set(ref _surname, value)) NotifyOfPropertyChange(nameof(CanConfirm));
         }
+    }
 
-        private string _age = "";
-        public string Age
+    public string Age
+    {
+        get => _age;
+        set
         {
-            get => _age;
-            set
-            {
-                if (Set(ref _age, value))
-                {
-                    NotifyOfPropertyChange(nameof(CanConfirm));
-                }
-            }
+            if (Set(ref _age, value)) NotifyOfPropertyChange(nameof(CanConfirm));
         }
+    }
 
-        public bool CanConfirm =>
-            !string.IsNullOrEmpty(Name) &&
-            !string.IsNullOrEmpty(Surname) &&
-            !string.IsNullOrEmpty(Age) &&
-            int.TryParse(Age, out _);
+    public bool CanConfirm =>
+        !string.IsNullOrEmpty(Name) &&
+        !string.IsNullOrEmpty(Surname) &&
+        !string.IsNullOrEmpty(Age) &&
+        int.TryParse(Age, out _);
 
-        public async void Confirm()
-        {
-            await TryCloseAsync(true);
-        }
+    public async void Confirm()
+    {
+        await TryCloseAsync(true);
+    }
 
-        public async void Abort()
-        {
-            await TryCloseAsync(false);
-        }
+    public async void Abort()
+    {
+        await TryCloseAsync(false);
     }
 }

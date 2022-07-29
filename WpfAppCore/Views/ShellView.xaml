@@ -1,32 +1,32 @@
 ﻿<controls:AdonisWindow x:Class="WpfAppCore.Views.ShellView"
-              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-              xmlns:local="clr-namespace:WpfAppCore.Views"
-              xmlns:controls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
-              mc:Ignorable="d"
-              WindowStartupLocation="CenterScreen"
-              MinWidth="800" MinHeight="450"
-              Title="ShellView" Width="800" Height="450">
+                       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                       xmlns:controls="clr-namespace:AdonisUI.Controls;assembly=AdonisUI"
+                       mc:Ignorable="d"
+                       WindowStartupLocation="CenterScreen"
+                       MinWidth="800" MinHeight="450"
+                       Title="ShellView" Width="800" Height="450">
     <Grid>
         <Menu IsMainMenu="True">
-            <MenuItem Header="_File" >
-                <MenuItem Header="_New..."  x:Name="MenuItem_New"/>
-                <MenuItem Header="_Open..." x:Name="MenuItem_Open"/>
+            <MenuItem Header="_File">
+                <MenuItem Header="_New..." x:Name="MenuItem_New" />
+                <MenuItem Header="_Open..." x:Name="MenuItem_Open" />
                 <Separator />
-                <MenuItem Header="_Save" x:Name="MenuItem_Save"/>
-                <MenuItem Header="_Save As..." x:Name="MenuItem_SaveAs"/>
+                <MenuItem Header="_Save" x:Name="MenuItem_Save" />
+                <MenuItem Header="_Save As..." x:Name="MenuItem_SaveAs" />
                 <Separator />
-                <MenuItem Header="_Settings" x:Name="MenuItem_Settings"/>
+                <MenuItem Header="_Settings" x:Name="MenuItem_Settings" />
                 <Separator />
-                <MenuItem Header="_Close"  x:Name="MenuItem_Close"/>
+                <MenuItem Header="_Close" x:Name="MenuItem_Close" />
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_About" x:Name="MenuItem_About" />
             </MenuItem>
         </Menu>
-        <ComboBox x:Name="ComboBox" Width="60" Height="24"/>
-        <Button x:Name="ShowList" Content="Show List" Height="24" Margin="10,0,0,10" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="165"/>
+        <ComboBox x:Name="ComboBox" Width="60" Height="24" />
+        <Button x:Name="ShowList" Content="Show List" Height="24" Margin="10,0,0,10" VerticalAlignment="Bottom"
+                HorizontalAlignment="Left" Width="165" />
     </Grid>
 </controls:AdonisWindow>
