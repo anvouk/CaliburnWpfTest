@@ -5,12 +5,15 @@ using System.Text.Json.Serialization;
 using System.Windows;
 using AdonisUI;
 using Caliburn.Micro;
+using Serilog;
 
 namespace WpfAppCore.Services;
 
 [Serializable]
 public class SettingsManager
 {
+    private static readonly ILogger _log = Log.ForContext<SettingsManager>();
+
     [JsonPropertyName("currentTheme")]
     public string CurrentTheme { get; set; } = "Light";
 
@@ -19,6 +22,7 @@ public class SettingsManager
         if (theme == CurrentTheme) return;
         CurrentTheme = theme;
         Uri? th = theme == "Light" ? ResourceLocator.LightColorScheme : ResourceLocator.DarkColorScheme;
+        _log.Information($"Changing theme to: {theme}");
         ResourceLocator.SetColorScheme(Application.Current.Resources, th);
     }
 
@@ -36,8 +40,7 @@ public class SettingsManager
         }
         catch (Exception e)
         {
-            // TODO: handle
-            Console.WriteLine(e);
+            _log.Error(e, "Failed saving app config");
         }
     }
 
@@ -47,11 +50,11 @@ public class SettingsManager
         {
             SettingsManager? settingsManager = IoC.Get<SettingsManager>();
             SettingsManager? loadedSettings = JsonSerializer.Deserialize<SettingsManager>(File.ReadAllText(filename));
-            MessageBox.Show(loadedSettings.CurrentTheme, "Theme");
             settingsManager.ChangeTheme(loadedSettings.CurrentTheme);
         }
         catch (Exception e)
         {
+            _log.Warning(e, "Failed loading app config. Using default config");
             LoadDefaultSettings();
         }
     }

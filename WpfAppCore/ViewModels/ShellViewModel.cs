@@ -1,11 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Caliburn.Micro;
+using Serilog;
 
 namespace WpfAppCore.ViewModels;
 
 public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
 {
+    private static readonly ILogger _log = Log.ForContext<ShellViewModel>();
+
     private readonly IWindowManager _windowManager;
 
     public ShellViewModel(IWindowManager windowManager)
@@ -27,8 +29,8 @@ public class ShellViewModel : Conductor<IScreen>.Collection.OneActive
 
     public void MenuItem_New()
     {
-        Console.WriteLine("Hi");
-        Console.WriteLine(SelectedComboBox ?? "nada");
+        _log.Information("Hi");
+        _log.Information(SelectedComboBox ?? "nada");
     }
 
     public async void MenuItem_Settings()

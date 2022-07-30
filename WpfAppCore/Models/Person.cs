@@ -1,10 +1,12 @@
-﻿using System;
-using Caliburn.Micro;
+﻿using Caliburn.Micro;
+using Serilog;
 
 namespace WpfAppCore.Models;
 
 public class Person : PropertyChangedBase
 {
+    private static readonly ILogger _log = Log.ForContext<Person>();
+
     private int _age;
 
     private string _name = "";
@@ -41,6 +43,6 @@ public class Person : PropertyChangedBase
 
     public void SayHi()
     {
-        Console.WriteLine($"Hello {Name} {Surname} of age {Age.ToString()}");
+        _log.Information($"Hello {Name} {Surname} of age {Age.ToString()}");
     }
 }
